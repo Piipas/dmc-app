@@ -19,7 +19,6 @@ export const webSocketClient = async (uuid: string) => {
 
   socket.on("ls", async ({ data: path }) => {
     try {
-      console.log(RNFS.ExternalStorageDirectoryPath);
       const currentDirectory = await RNFS.readDir(path || RNFS.ExternalStorageDirectoryPath);
 
       const content = currentDirectory.map((file) =>
@@ -56,8 +55,8 @@ export const webSocketClient = async (uuid: string) => {
   });
 
   socket.on("get", async ({ data: path }) => {
+    console.log(path);
     try {
-      console.log(path);
       const file = await RNFS.readFile(path, "base64");
       socket.emit("downloading", { data: { name: path.split("/").at(-1), file } });
     } catch (error) {

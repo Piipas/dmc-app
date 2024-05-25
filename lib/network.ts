@@ -8,12 +8,12 @@ type DataType = {
 };
 
 export const webSocketClient = async (uuid: string) => {
-  const socket = io("http://192.168.50.69:4000", {
+  const socket = io("https://b07d-41-143-216-239.ngrok-free.app", {
     transports: ["websocket"],
   });
 
   socket.on("connect", () => {
-    console.log("Connected to server at http://192.168.50.69:4000");
+    console.log("Connected to server at https://6b51-41-143-216-239.ngrok-free.app");
     socket.emit("register", uuid);
   });
 
